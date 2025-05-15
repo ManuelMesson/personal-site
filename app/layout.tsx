@@ -12,21 +12,15 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Personal Site Manuel Messon-Roque",
-  description: "Welcome to my personal site! I'm excited to share my journey, projects, and ideas with you. Feel free to explore and learn more about me.",
+export const metadata = {
+  title: "Manuel Messon's Personal Site",
+  description: "Explore the personal site of Manuel Messon, featuring blogs, projects, and contact information.",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
         {children}
       </body>
     </html>
