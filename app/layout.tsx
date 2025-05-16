@@ -8,35 +8,35 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://manuelMesson-Roque.com'),
+  metadataBase: new URL('https://manuelmesson.com'),
   title: {
-    default: "Manuel Messon-Roque - Web Developer",
+    default: "Manuel Messon-Roque - Entrepreneur",
     template: "%s | Manuel Messon-Roque"
   },
-  description: "Full-stack developer specializing in modern web applications with React, Next.js, and TypeScript",
+  description: "Entrepreneur building SaaS tools and coffee businesses that blend tech, creativity, and human connection",
   keywords: ["web developer", "full-stack", "React", "Next.js", "TypeScript"],
   authors: [{ name: "Manuel Messon-Roque" }],
   creator: "Manuel Messon-Roque",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://manuelMesson-Roque.com",
+    url: "https://manuelmesson.com",
     siteName: "Manuel Messon-Roque",
-    title: "Manuel Messon-Roque - Web Developer",
-    description: "Full-stack developer specializing in modern web applications",
+    title: "Manuel Messon-Roque - Entrepreneur",
+    description: "Entrepreneur building SaaS tools and coffee businesses that blend tech, creativity, and human connection",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Manuel Messon-Roque - Web Developer"
+        alt: "Manuel Messon-Roque - Entrepreneur"
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "Manuel Messon-Roque - Web Developer",
-    description: "Full-stack developer specializing in modern web applications",
+    title: "Manuel Messon-Roque - Entrepreneur",
+    description: "Entrepreneur building SaaS tools and coffee businesses that blend tech, creativity, and human connection",
     images: ["/og-image.png"]
   },
   robots: {
