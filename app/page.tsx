@@ -42,11 +42,11 @@ export default function Home() {
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'Person',
-    name: 'Manuel Messon',
-    url: 'https://manuelmesson.com',
+    name: 'Manuel Messon-Roque',
+    url: 'https://manuelMesson-Roque.com',
     jobTitle: 'Web Developer',
     knowsAbout: ['React', 'Next.js', 'TypeScript', 'Web Development'],
-    image: 'https://manuelmesson.com/profile-image.jpg',
+    image: 'https://manuelMesson-Roque.com/profile-image.jpg',
     sameAs: [
       'https://github.com/yourhandle',
       'https://linkedin.com/in/yourprofile',

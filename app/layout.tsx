@@ -8,34 +8,34 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://manuelmesson.com'),
+  metadataBase: new URL('https://manuelMesson-Roque.com'),
   title: {
-    default: "Manuel Messon - Web Developer",
-    template: "%s | Manuel Messon"
+    default: "Manuel Messon-Roque - Web Developer",
+    template: "%s | Manuel Messon-Roque"
   },
   description: "Full-stack developer specializing in modern web applications with React, Next.js, and TypeScript",
   keywords: ["web developer", "full-stack", "React", "Next.js", "TypeScript"],
-  authors: [{ name: "Manuel Messon" }],
-  creator: "Manuel Messon",
+  authors: [{ name: "Manuel Messon-Roque" }],
+  creator: "Manuel Messon-Roque",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://manuelmesson.com",
-    siteName: "Manuel Messon",
-    title: "Manuel Messon - Web Developer",
+    url: "https://manuelMesson-Roque.com",
+    siteName: "Manuel Messon-Roque",
+    title: "Manuel Messon-Roque - Web Developer",
     description: "Full-stack developer specializing in modern web applications",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Manuel Messon - Web Developer"
+        alt: "Manuel Messon-Roque - Web Developer"
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "Manuel Messon - Web Developer",
+    title: "Manuel Messon-Roque - Web Developer",
     description: "Full-stack developer specializing in modern web applications",
     images: ["/og-image.png"]
   },

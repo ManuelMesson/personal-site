@@ -5,7 +5,7 @@ export default function HomeSection() {
     <Section className="min-h-[80vh] flex items-center">
       <div className="space-y-8 max-w-3xl">
         <h1 className="animate-fade-in">
-          Hi, I'm Manuel Messon
+          Hi, I'm Manuel Messon-Roque
         </h1>
         <p className="text-lg md:text-xl text-secondary max-w-prose">
           A passionate developer focused on creating beautiful and functional web experiences. 

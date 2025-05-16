@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/private/',
     },
-    sitemap: 'https://manuelmesson.com/sitemap.xml',
+    sitemap: 'https://manuelMesson-Roque.com/sitemap.xml',
   };
 }
