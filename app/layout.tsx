@@ -1,27 +1,19 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Manuel Messon's Personal Site",
-  description: "Explore the personal site of Manuel Messon, featuring blogs, projects, and contact information.",
+  title: "Manuel Messon - Personal Site",
+  description: "Personal website and blog of Manuel Messon",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-        {children}
+    <html lang="en" className={inter.className}>
+      <body>
+        <div className="min-h-screen flex flex-col">{children}</div>
       </body>
     </html>
   );

@@ -1,13 +1,19 @@
-export default function BlogPost({ params }: { params: { id: string } }) {
+"use client";
+
+import blogPosts from '../../data/blogPosts';
+
+export default function BlogDetails({ id }: { id: number }) {
+  const post = blogPosts.find((post) => post.id === id);
+
+  if (!post) {
+    return <p>Blog post not found.</p>;
+  }
+
   return (
-    <div className="min-h-screen p-8 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-      <h1 className="text-4xl font-bold mb-4">Blog Post {params.id}</h1>
-      <p className="text-lg">
-        This is the content for blog post {params.id}. You can fetch and display dynamic content here.
-      </p>
-      <a href="/blog" className="text-blue-500 hover:underline">
-        Back to Blog
-      </a>
-    </div>
+    <article className="container">
+      <h1 className="text-3xl font-bold">{post.title}</h1>
+      <p className="text-sm text-gray-500">{post.date}</p>
+      <p className="mt-4">{post.content}</p>
+    </article>
   );
 }
