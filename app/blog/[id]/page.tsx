@@ -2,21 +2,14 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import blogPosts from '../../data/blogPosts';
 
-interface PageParams {
-  id: string;
-}
-
-type PageProps = {
-  params: PageParams;
-};
-
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata(props: { 
+  params: Promise<{ id: string }> 
+}): Promise<Metadata> {
+  const params = await props.params;
   const post = blogPosts.find((post) => post.id === parseInt(params.id));
 
   if (!post) {
-    return {
-      title: 'Post Not Found',
-    };
+    return { title: 'Post Not Found' };
   }
 
   return {
@@ -25,13 +18,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export async function generateStaticParams(): Promise<PageParams[]> {
+export async function generateStaticParams() {
   return blogPosts.map((post) => ({
     id: post.id.toString(),
   }));
 }
 
-export default function BlogPost({ params }: PageProps) {
+export default async function BlogPost(props: {
+  params: Promise<{ id: string }>
+}) {
+  const params = await props.params;
   const post = blogPosts.find((post) => post.id === parseInt(params.id));
 
   if (!post) {
