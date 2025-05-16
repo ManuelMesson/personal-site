@@ -1,15 +1,21 @@
-import type { Metadata } from 'next';
+import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import blogPosts from '../../data/blogPosts';
 
-type Props = {
-  params: {
-    id: string;
-  };
-  searchParams: { [key: string]: string | string[] | undefined };
+interface SearchParams {
+  [key: string]: string | string[] | undefined;
+}
+
+interface PageParams {
+  id: string;
+}
+
+type PageProps = {
+  params: PageParams;
+  searchParams: SearchParams;
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const post = blogPosts.find((post) => post.id === parseInt(params.id));
   
   if (!post) {
@@ -21,23 +27,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: post.title,
     description: post.excerpt,
-    openGraph: {
-      title: post.title,
-      description: post.excerpt,
-      type: 'article',
-      publishedTime: post.date,
-      authors: ['Manuel Messon'],
-    },
   };
 }
 
-export async function generateStaticParams() {
+export async function generateStaticParams(): Promise<PageParams[]> {
   return blogPosts.map((post) => ({
     id: post.id.toString(),
   }));
 }
 
-export default function BlogPost({ params, searchParams }: Props) {
+export default async function BlogPost({ params }: PageProps) {
   const post = blogPosts.find((post) => post.id === parseInt(params.id));
 
   if (!post) {

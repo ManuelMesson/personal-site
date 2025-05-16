@@ -2,11 +2,11 @@
 
 import blogPosts from '../data/blogPosts';
 
-interface Props {
+interface BlogPostDetailProps {
   id: number;
 }
 
-export default function BlogPostDetail({ id }: Props) {
+export default function BlogPostDetail({ id }: BlogPostDetailProps) {
   const post = blogPosts.find((post) => post.id === id);
 
   if (!post) {
