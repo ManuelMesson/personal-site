@@ -1,15 +1,13 @@
 'use client';
 
-import blogPosts from '../../data/blogPosts';
+import blogPosts from '../data/blogPosts';
 
 interface Props {
-  params: {
-    id: string;
-  };
+  id: number;
 }
 
-export default function BlogPost({ params }: Props) {
-  const post = blogPosts.find((post) => post.id === parseInt(params.id));
+export default function BlogPostDetail({ id }: Props) {
+  const post = blogPosts.find((post) => post.id === id);
 
   if (!post) {
     return (
