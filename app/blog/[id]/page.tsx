@@ -2,22 +2,17 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import blogPosts from '../../data/blogPosts';
 
-interface SearchParams {
-  [key: string]: string | string[] | undefined;
-}
-
 interface PageParams {
   id: string;
 }
 
 type PageProps = {
   params: PageParams;
-  searchParams: SearchParams;
 };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const post = blogPosts.find((post) => post.id === parseInt(params.id));
-  
+
   if (!post) {
     return {
       title: 'Post Not Found',
@@ -36,7 +31,7 @@ export async function generateStaticParams(): Promise<PageParams[]> {
   }));
 }
 
-export default async function BlogPost({ params }: PageProps) {
+export default function BlogPost({ params }: PageProps) {
   const post = blogPosts.find((post) => post.id === parseInt(params.id));
 
   if (!post) {
