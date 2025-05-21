@@ -8,8 +8,7 @@ export default function HomeSection() {
           Hi, I'm Manuel Messon-Roque
         </h1>
         <p className="text-base md:text-xl text-secondary max-w-prose text-center md:text-left">
-          A passionate developer focused on creating beautiful and functional web experiences. 
-          I combine technical expertise with creative problem-solving to build modern web applications.
+         I’m a builder and entrepreneur focused on creating online tools and digital products that solve real problems. With a customer-first mindset, I combine technical skills and creative thinking to craft modern, meaningful experiences.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
           <a href="#projects" className="button w-full sm:w-auto text-center">
