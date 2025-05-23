@@ -9,8 +9,19 @@ export default function AboutSection() {
         <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-12 items-start">
           {/* Main Content */}
           <div className="flex-1">
-            <p className="text-base md:text-lg text-zinc-800 dark:text-zinc-100 mb-10 text-left">
-              I’m a developer passionate about crafting clean, accessible, and delightful digital experiences. My journey from coffee artistry to code means I value both creativity and precision in every project.
+            <p className="text-base md:text-lg text-zinc-800 dark:text-zinc-100 mb-10 text-left whitespace-pre-line">
+              {`
+              Hi, I'm Manuel.
+
+Since I was a kid, I’ve been passionate about computers and app development. I love solving problems with tech and building tools that make life easier. My focus is on creating digital products that support hospitality and customer service—fields I care deeply about. With a customer-obsessed mindset, I’m currently working on launching my first SaaS product.
+
+I'm also passionate about coffee and creating great guest experiences. I’ve always loved the energy of a busy cafe, the rhythm of good service, and the small details that make people feel welcome. Sales and helping others come naturally to me, and I enjoy making connections while delivering excellent service.
+
+I was born and raised in Puerto Rico and moved to Seattle when I was 25. It’s been 8 years, and the journey has taught me a lot about resilience, growth, and building from the ground up.
+
+Now, I’m focused on combining my love for tech and hospitality to launch meaningful products—and eventually, open my own café spaces.
+
+This is just the beginning, and I’m excited for what’s ahead.`}
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {/* Skills Card */}
