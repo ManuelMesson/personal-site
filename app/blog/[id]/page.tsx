@@ -1,48 +1,129 @@
 import { Metadata } from 'next';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import blogPosts from '../../data/blogPosts';
+import Nav from '../../Nav';
+import { getAllBlogPosts, getBlogPostById } from '../../lib/blog';
+import { formatDate } from '../../lib/formatDate';
+import { siteConfig } from '../../siteConfig';
 
-export async function generateMetadata(props: { 
-  params: Promise<{ id: string }> 
-}): Promise<Metadata> {
-  const params = await props.params;
-  const post = blogPosts.find((post) => post.id === parseInt(params.id));
+interface BlogPostPageProps {
+  params: Promise<{
+    id: string;
+  }>;
+}
+
+function parsePostId(idParam: string) {
+  return Number.parseInt(idParam, 10);
+}
+
+export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
+  const resolvedParams = await params;
+  const post = getBlogPostById(parsePostId(resolvedParams.id));
 
   if (!post) {
     return { title: 'Post Not Found' };
   }
 
+  const canonicalPath = `/blog/${post.id}`;
+
   return {
     title: post.title,
     description: post.excerpt,
+    alternates: {
+      canonical: canonicalPath,
+    },
+    openGraph: {
+      type: 'article',
+      url: `${siteConfig.url}${canonicalPath}`,
+      title: post.title,
+      description: post.excerpt,
+      publishedTime: post.date,
+      authors: [siteConfig.name],
+      tags: post.tags,
+      images: [
+        {
+          url: '/opengraph-image',
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt,
+      images: ['/twitter-image'],
+    },
   };
 }
 
-export async function generateStaticParams() {
-  return blogPosts.map((post) => ({
+export function generateStaticParams() {
+  return getAllBlogPosts().map((post) => ({
     id: post.id.toString(),
   }));
 }
 
-export default async function BlogPost(props: {
-  params: Promise<{ id: string }>
-}) {
-  const params = await props.params;
-  const post = blogPosts.find((post) => post.id === parseInt(params.id));
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
+  const resolvedParams = await params;
+  const post = getBlogPostById(parsePostId(resolvedParams.id));
 
   if (!post) {
     notFound();
   }
 
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    datePublished: post.date,
+    dateModified: post.date,
+    description: post.excerpt,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${siteConfig.url}/blog/${post.id}`,
+    },
+    author: {
+      '@type': 'Person',
+      name: siteConfig.name,
+    },
+    publisher: {
+      '@type': 'Person',
+      name: siteConfig.name,
+    },
+    url: `${siteConfig.url}/blog/${post.id}`,
+  };
+
   return (
-    <article className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
-      <time dateTime={post.date} className="text-gray-600 mb-6 block">
-        {post.date}
-      </time>
-      <div className="prose prose-lg max-w-none">
-        {post.content}
-      </div>
-    </article>
+    <>
+      <Nav />
+      <main className="section" id="main-content">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+
+        <article className="site-wrap">
+          <Link href="/blog" className="button button-outline section-copy inline-flex">
+            Back to blog
+          </Link>
+
+          <header className="section-intro">
+            <h1 className="section-title">{post.title}</h1>
+            <time dateTime={post.date} className="muted block card-copy">
+              {formatDate(post.date)}
+            </time>
+            <div className="flex flex-wrap gap-2">
+              {post.tags.map((tag) => (
+                <span key={tag} className="chip">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </header>
+
+          <div className="card">
+            <p className="mb-0 break-words text-lg leading-8 text-[var(--text)]">{post.content}</p>
+          </div>
+        </article>
+      </main>
+    </>
   );
 }

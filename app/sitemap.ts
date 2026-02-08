@@ -1,30 +1,38 @@
 import { MetadataRoute } from 'next';
-import blogPosts from './data/blogPosts';
+import { getAllBlogPosts } from './lib/blog';
+import { siteConfig } from './siteConfig';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://manuelMesson-Roque.com';
+  const blogPosts = getAllBlogPosts();
+  const latestPostDate = blogPosts.reduce<Date>(
+    (latest, post) => {
+      const postDate = new Date(post.date);
+      return postDate > latest ? postDate : latest;
+    },
+    new Date('2025-01-01')
+  );
 
-  // Get all blog posts
-  const blogUrls = blogPosts.map((post) => ({
-    url: `${baseUrl}/blog/${post.id}`,
-    lastModified: post.date,
-    changeFrequency: 'monthly' as const,
+  const staticRoutes: MetadataRoute.Sitemap = [
+    {
+      url: siteConfig.url,
+      lastModified: latestPostDate,
+      changeFrequency: 'weekly',
+      priority: 1,
+    },
+    {
+      url: `${siteConfig.url}/blog`,
+      lastModified: latestPostDate,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+  ];
+
+  const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((post) => ({
+    url: `${siteConfig.url}/blog/${post.id}`,
+    lastModified: new Date(post.date),
+    changeFrequency: 'monthly',
     priority: 0.7,
   }));
 
-  // Add static pages
-  const routes = [
-    '',
-    '/about',
-    '/projects',
-    '/contact',
-    '/blog',
-  ].map((route) => ({
-    url: `${baseUrl}${route}`,
-    lastModified: new Date().toISOString(),
-    changeFrequency: 'monthly' as const,
-    priority: route === '' ? 1 : 0.8,
-  }));
-
-  return [...routes, ...blogUrls];
+  return [...staticRoutes, ...blogRoutes];
 }

@@ -1,43 +1,49 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-
-const inter = Inter({ 
-  subsets: ["latin"],
-  display: 'swap', // Ensure text remains visible during webfont load
-});
+import type { Metadata } from 'next';
+import './globals.css';
+import { siteConfig } from './siteConfig';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://manuelmesson.com'),
+  metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Manuel Messon-Roque - Entrepreneur",
-    template: "%s | Manuel Messon-Roque"
+    default: siteConfig.title,
+    template: `%s | ${siteConfig.name}`,
   },
-  description: "Entrepreneur building SaaS tools and coffee businesses that blend tech, creativity, and human connection",
-  keywords: ["web developer", "full-stack", "React", "Next.js", "TypeScript"],
-  authors: [{ name: "Manuel Messon-Roque" }],
-  creator: "Manuel Messon-Roque",
+  applicationName: siteConfig.name,
+  description: siteConfig.description,
+  keywords: ['entrepreneur', 'saas', 'react', 'next.js', 'typescript', 'hospitality tech'],
+  authors: [{ name: siteConfig.name }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  alternates: {
+    canonical: '/',
+  },
+  manifest: '/manifest.webmanifest',
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico',
+  },
   openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://manuelmesson.com",
-    siteName: "Manuel Messon-Roque",
-    title: "Manuel Messon-Roque - Entrepreneur",
-    description: "Entrepreneur building SaaS tools and coffee businesses that blend tech, creativity, and human connection",
+    type: 'website',
+    locale: 'en_US',
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    title: siteConfig.title,
+    description: siteConfig.description,
     images: [
       {
-        url: "/og-image.png",
+        url: '/opengraph-image',
         width: 1200,
         height: 630,
-        alt: "Manuel Messon-Roque - Entrepreneur"
-      }
-    ]
+        alt: siteConfig.title,
+      },
+    ],
   },
   twitter: {
-    card: "summary_large_image",
-    title: "Manuel Messon-Roque - Entrepreneur",
-    description: "Entrepreneur building SaaS tools and coffee businesses that blend tech, creativity, and human connection",
-    images: ["/og-image.png"]
+    card: 'summary_large_image',
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: ['/twitter-image'],
   },
   robots: {
     index: true,
@@ -50,20 +56,15 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  verification: {
-    google: "your-google-verification-code",
-  }
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={inter.className}>
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-        <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
-        <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
-      </head>
-      <body className="min-h-screen flex flex-col antialiased">
+    <html lang="en">
+      <body className="antialiased">
+        <a className="skip-link" href="#main-content">
+          Skip to content
+        </a>
         {children}
       </body>
     </html>

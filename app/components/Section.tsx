@@ -1,23 +1,20 @@
-// components/Section.tsx
 interface SectionProps {
   title?: string;
   children: React.ReactNode;
   className?: string;
   containerClassName?: string;
   fullWidth?: boolean;
+  id?: string;
 }
 
-export default function Section({ 
-  title, 
-  children, 
-  className = '', 
-  containerClassName = '',
-  fullWidth = false
-}: SectionProps) {
+export default function Section({ title, children, className = '', containerClassName = '', fullWidth = false, id }: SectionProps) {
+  const sectionClassName = ['section', className].filter(Boolean).join(' ');
+  const innerClassName = [fullWidth ? '' : 'site-wrap', containerClassName].filter(Boolean).join(' ');
+
   return (
-    <section className={`section ${className}`}>
-      <div className={`${fullWidth ? '' : 'container'} ${containerClassName}`}>
-        {title && <h2 className="mb-8">{title}</h2>}
+    <section id={id} className={sectionClassName}>
+      <div className={innerClassName}>
+        {title && <h2 className="mb-5">{title}</h2>}
         {children}
       </div>
     </section>
