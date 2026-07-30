@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   },
   applicationName: siteConfig.name,
   description: siteConfig.description,
-  keywords: ['entrepreneur', 'saas', 'react', 'next.js', 'typescript', 'hospitality tech'],
+  keywords: ['founder-operator', 'AI agents', 'PopoSoft', 'Landed', 'Shelves', 'open source'],
   authors: [{ name: siteConfig.name }],
   creator: siteConfig.name,
   publisher: siteConfig.name,

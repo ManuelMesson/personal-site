@@ -2,25 +2,27 @@ import Section from './Section';
 
 const projects = [
   {
-    title: 'Hospitality Ops SaaS',
-    description: 'Internal tooling to improve service speed, team visibility, and consistency in high-volume operations.',
-    tech: ['Next.js', 'TypeScript', 'PostgreSQL'],
-    link: '',
+    title: 'Landed',
+    description: 'A live AI career tool.',
+    details: ['Live', 'AI career tool'],
+    link: 'https://landed-cz99.onrender.com',
+    linkLabel: 'Open Landed',
   },
   {
-    title: 'Personal Publishing Platform',
-    description: 'A focused platform for sharing build logs, project writeups, and practical lessons from product execution.',
-    tech: ['Next.js', 'React', 'Tailwind CSS'],
-    link: '',
+    title: 'Shelves',
+    description: 'An open-source memory engine, released under the MIT License.',
+    details: ['Open source', 'Memory engine', 'MIT'],
+    link: 'https://github.com/ManuelMesson/shelves',
+    linkLabel: 'View repository',
   },
-];
+] as const;
 
 export default function ProjectsSection() {
   return (
     <Section id="projects">
       <span className="section-kicker">Projects</span>
       <h2 className="section-title">Selected work</h2>
-      <p className="section-lead section-copy">A snapshot of what I am building right now across product, code, and operations.</p>
+      <p className="section-lead section-copy">Two products shipped through PopoSoft.</p>
 
       <div className="card-grid two">
         {projects.map((project) => (
@@ -29,22 +31,24 @@ export default function ProjectsSection() {
             <p className="card-copy muted">{project.description}</p>
 
             <div className="card-meta flex flex-wrap gap-2">
-              {project.tech.map((tech) => (
-                <span key={tech} className="chip">
-                  {tech}
+              {project.details.map((detail) => (
+                <span key={detail} className="chip">
+                  {detail}
                 </span>
               ))}
             </div>
 
-            {project.link ? (
-              <a href={project.link} className="read-link">
-                View project
-              </a>
-            ) : (
-              <p className="muted mb-0">Detailed case study coming soon.</p>
-            )}
+            <a href={project.link} target="_blank" rel="noopener noreferrer" className="read-link">
+              {project.linkLabel}
+            </a>
           </article>
         ))}
+      </div>
+
+      <div className="section-action">
+        <a href="https://github.com/ManuelMesson" target="_blank" rel="noopener noreferrer" className="button button-outline">
+          View GitHub profile
+        </a>
       </div>
     </Section>
   );

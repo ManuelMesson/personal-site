@@ -24,8 +24,8 @@ export default function TwitterImage() {
           fontFamily: 'Arial, sans-serif',
         }}
       >
-        <div style={{ fontSize: 26, letterSpacing: 1, textTransform: 'uppercase', color: '#8ab39e' }}>Manuel Messon-Roque</div>
-        <div style={{ fontSize: 72, lineHeight: 1.05, maxWidth: 980, fontWeight: 700 }}>SaaS, hospitality, and execution-focused writing.</div>
+        <div style={{ fontSize: 26, letterSpacing: 1, textTransform: 'uppercase', color: '#8ab39e' }}>Founder-Operator</div>
+        <div style={{ fontSize: 72, lineHeight: 1.05, maxWidth: 980, fontWeight: 700 }}>I build software by directing AI agents.</div>
         <div style={{ fontSize: 30, color: '#c6d2cb' }}>{siteConfig.url.replace('https://', '')}</div>
       </div>
     ),

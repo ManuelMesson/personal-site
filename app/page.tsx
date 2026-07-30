@@ -14,8 +14,8 @@ export default function Home() {
     '@type': 'Person',
     name: siteConfig.name,
     url: siteConfig.url,
-    jobTitle: 'Entrepreneur',
-    knowsAbout: ['SaaS', 'React', 'Next.js', 'TypeScript', 'Hospitality'],
+    jobTitle: 'Founder-Operator',
+    knowsAbout: ['Software', 'AI agents', 'Customer-facing operations'],
     sameAs,
   };
 

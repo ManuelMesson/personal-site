@@ -24,8 +24,8 @@ export default function OpenGraphImage() {
           fontFamily: 'Arial, sans-serif',
         }}
       >
-        <div style={{ fontSize: 28, letterSpacing: 1, textTransform: 'uppercase', color: '#2d5f48' }}>Manuel Messon-Roque</div>
-        <div style={{ fontSize: 76, lineHeight: 1.05, maxWidth: 1000, fontWeight: 700 }}>Entrepreneur building practical products.</div>
+        <div style={{ fontSize: 28, letterSpacing: 1, textTransform: 'uppercase', color: '#2d5f48' }}>Founder-Operator</div>
+        <div style={{ fontSize: 76, lineHeight: 1.05, maxWidth: 1000, fontWeight: 700 }}>I build software by directing AI agents.</div>
         <div style={{ fontSize: 30, color: '#445046' }}>{siteConfig.url.replace('https://', '')}</div>
       </div>
     ),
