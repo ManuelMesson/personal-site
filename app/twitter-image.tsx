@@ -18,15 +18,15 @@ export default function TwitterImage() {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
-          background: '#1d2520',
-          color: '#f6f7f4',
+          background: 'linear-gradient(145deg, #0c0a11 0%, #131020 72%, #21173a 100%)',
+          color: '#f2eff9',
           padding: '64px',
           fontFamily: 'Arial, sans-serif',
         }}
       >
-        <div style={{ fontSize: 26, letterSpacing: 1, textTransform: 'uppercase', color: '#8ab39e' }}>Founder-Operator</div>
+        <div style={{ fontSize: 26, letterSpacing: 1, textTransform: 'uppercase', color: '#f0b35e' }}>Founder-Operator</div>
         <div style={{ fontSize: 72, lineHeight: 1.05, maxWidth: 980, fontWeight: 700 }}>I build software by directing AI agents.</div>
-        <div style={{ fontSize: 30, color: '#c6d2cb' }}>{siteConfig.url.replace('https://', '')}</div>
+        <div style={{ fontSize: 30, color: '#b7b2d4' }}>{siteConfig.url.replace('https://', '')}</div>
       </div>
     ),
     size

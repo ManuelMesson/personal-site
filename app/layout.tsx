@@ -2,6 +2,17 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { siteConfig } from './siteConfig';
 
+const themeBootstrap = `
+  (() => {
+    try {
+      const savedTheme = window.localStorage.getItem('liquid-cafe-theme');
+      if (savedTheme === 'espresso' || savedTheme === 'latte') {
+        document.documentElement.dataset.theme = savedTheme;
+      }
+    } catch {}
+  })();
+`;
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
@@ -60,7 +71,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeBootstrap }} />
+      </head>
       <body className="antialiased">
         <a className="skip-link" href="#main-content">
           Skip to content

@@ -26,7 +26,7 @@ export default function ProjectsSection() {
 
       <div className="card-grid two">
         {projects.map((project) => (
-          <article key={project.title} className="card">
+          <article key={project.title} className="card project-card">
             <h3 className="card-title">{project.title}</h3>
             <p className="card-copy muted">{project.description}</p>
 
