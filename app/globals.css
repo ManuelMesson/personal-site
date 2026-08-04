@@ -553,6 +553,15 @@ a.card:active {
   gap: clamp(0.9rem, 3vw, 1.2rem);
 }
 
+/* Post body — paragraph rhythm.
+   Lives unlayered on purpose: the global `* { margin: 0 }` reset above sits
+   outside Tailwind's cascade layers, so unlayered CSS is the only thing that
+   can give paragraphs air. A `mb-*` utility is silently swallowed here.
+   Scoped to .post-body so nothing Casey gated can be reached. */
+.post-body > p + p {
+  margin-top: clamp(1rem, 3vw, 1.35rem);
+}
+
 .card {
   position: relative;
   min-width: 0;

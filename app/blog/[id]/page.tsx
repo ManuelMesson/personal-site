@@ -119,17 +119,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </div>
           </header>
 
-          <div className="card">
+          <div className="card post-body">
             {post.content
               .split('\n\n')
               .map((paragraph) => paragraph.trim())
               .filter(Boolean)
-              .map((paragraph, index, paragraphs) => (
+              .map((paragraph) => (
                 <p
                   key={paragraph.slice(0, 48)}
-                  className={`${
-                    index === paragraphs.length - 1 ? 'mb-0' : 'mb-6'
-                  } break-words text-lg leading-8 text-[var(--text)]`}
+                  className="break-words text-lg leading-8 text-[var(--text)]"
                 >
                   {paragraph}
                 </p>
