@@ -10,21 +10,20 @@ export interface BlogPost {
 const blogPosts: BlogPost[] = [
   {
     id: 1,
-    title: 'Why I Build for Hospitality Teams',
-    date: '2025-05-20',
-    excerpt: 'Service businesses move fast, and software should support that pace without adding friction.',
-    content:
-      'Hospitality work is high-speed and people-first. I focus on tools that reduce manual coordination, make service quality more predictable, and free teams to spend more time with guests. The best software in this space feels invisible: it helps operators act quickly without forcing them through complex flows.',
-    tags: ['Hospitality', 'Operations', 'Product'],
-  },
-  {
-    id: 2,
-    title: 'Shipping a Personal Site as a Product',
-    date: '2025-05-22',
-    excerpt: 'Treating a personal website like a product changes the quality of every decision you make.',
-    content:
-      'This site is not just a portfolio page. It is an operating surface for projects, writing, and long-term ideas. Building it as a product means prioritizing reliability, clear navigation, and maintainable content structures so future updates are fast and low-risk.',
-    tags: ['Web Development', 'Personal Brand', 'Execution'],
+    title: 'Starting here',
+    date: '2026-08-03',
+    excerpt: "What I'm going to write about here, and why it isn't predictions.",
+    content: [
+      'I’ve had this site for a while and it said something that stopped being true.',
+      'Until this year I built software for hospitality businesses. Now I build AI agents, and I run a company staffed by them — PopoSoft, founded in March, one human. Two things are out in the world so far: Landed, a career tool people can actually use, and Shelves, the open-source memory engine underneath everything.',
+      'I still work as a barista at Amazon’s Day 1 HQ, five days a week. That isn’t a detour from the work; it’s where a lot of it comes from. Serving a hundred and fifty engineers and PMs a day teaches you something about reading what someone needs before they finish asking. Most of the design decisions I’m proudest of came off the bar, not off a whiteboard.',
+      'So this is what I’m going to write about here: agents, and what it’s actually like to build with them.',
+      'Not predictions. Not thought leadership. I’m not interested in telling anyone where this is going — I don’t know. What I can do is write down what happens when you try to run real work through these systems: what drifts, what breaks quietly, what you have to write down so it stops breaking, and the parts that turn out to be harder than the demos suggest.',
+      'Some of it will be technical. Some of it will just be operations — the boring, load-bearing kind. A lot of it will be about memory, because that’s the problem I keep landing on from every direction.',
+      'I’ll be honest about the misses. The most useful thing I’ve learned in five months is that the failures are more instructive than the wins, and almost nobody publishes them.',
+      'That’s the whole plan. More soon.',
+    ].join('\n\n'),
+    tags: ['AI Agents', 'Building', 'Notes'],
   },
 ];
 
